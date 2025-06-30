@@ -57,28 +57,6 @@ To run tests:
 
 dotnet test
 
-📁 Structure
-
-├── src
-│   └── IranianValidators
-│       ├── Validators
-│       │   ├── NationalCodeValidator.cs
-│       │   └── BankCardValidator.cs
-│       ├── Providers
-│       │   └── BankCardInfoProvider.cs
-│       └── Models
-│           └── BankCardInfo.cs
-├── tests
-│   └── IranianValidators.Tests
-│       └── ... (unit tests)
-
-
 🧑‍💻 Author
-
 Moein Maadi
 
-📍 Based in Iran, open to collaborations and contributions.
-
-📄 License
-
-MIT License
