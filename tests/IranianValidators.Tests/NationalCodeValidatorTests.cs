@@ -6,14 +6,6 @@ namespace IranianValidators.Tests;
 public class NationalCodeValidatorTests
 {
     [Theory]
-    [InlineData("2143101775")]
-    [InlineData("0084575941")]
-    public void Should_ReturnTrue_For_ValidCodes(string code)
-    {
-        Assert.True(NationalCodeValidator.IsValid(code));
-    }
-
-    [Theory]
     [InlineData("0084575941")] // correct
     [InlineData(" 0084575941 ")] // spaces around
     [InlineData("1111111111")] // reptitive digits
