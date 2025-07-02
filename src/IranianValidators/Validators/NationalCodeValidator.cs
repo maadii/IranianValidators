@@ -2,28 +2,33 @@
 
 namespace IranianValidators.Validators;
 
-public static class NationalCodeValidator
+internal static class NationalCodeValidator
 {
-    public static bool IsValid(string? nationalCode)
+    public static bool IsValid(string? code)
     {
-        if (string.IsNullOrWhiteSpace(nationalCode))
+        if (string.IsNullOrWhiteSpace(code) || code.Length != 10)
             return false;
 
-        nationalCode = nationalCode.Trim();
-
-        if (nationalCode.Length != 10 || !nationalCode.All(char.IsDigit))
+        if (!code.All(char.IsDigit))
             return false;
 
-        if (nationalCode.Distinct().Count() == 1)
+        var repeated = new[]
+        {
+        "0000000000", "1111111111", "2222222222", "3333333333", "4444444444",
+        "5555555555", "6666666666", "7777777777", "8888888888", "9999999999"
+    };
+
+        if (repeated.Contains(code))
             return false;
 
-        int check = int.Parse(nationalCode[9].ToString());
+        var sum = 0;
+        for (int i = 0; i < 9; i++)
+            sum += int.Parse(code[i].ToString()) * (10 - i);
 
-        int sum = Enumerable.Range(0, 9)
-                            .Select(i => int.Parse(nationalCode[i].ToString()) * (10 - i))
-                            .Sum();
+        var remainder = sum % 11;
+        var checkDigit = int.Parse(code[9].ToString());
 
-        int remainder = sum % 11;
-        return (remainder < 2 && check == remainder) || (remainder >= 2 && check == 11 - remainder);
+        return (remainder < 2 && checkDigit == remainder)
+            || (remainder >= 2 && checkDigit == 11 - remainder);
     }
 }
