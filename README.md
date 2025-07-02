@@ -2,23 +2,23 @@
 
 IranianValidators is a lightweight .NET library for validating and retrieving information about Iranian-specific identifiers such as:
 
-National ID codes
-
-Bank card numbers (with BIN recognition)
+- National ID codes (کد ملی)
+- Bank card numbers (شماره کارت بانکی) with BIN recognition
 
 This library is designed with clean architecture, full unit test coverage, and extensibility in mind.
 
-✅ Features
+## ✅ Features
 
-Validate Iranian national ID codes based on the official checksum algorithm
+- Validate Iranian national ID codes based on the official checksum algorithm
+- Validate Iranian bank card numbers using the Luhn algorithm
+- Identify the issuing bank of a card by its BIN (first 6 digits)
+- Support for 15+ major Iranian banks
+- Multilingual bank information (Persian and English)
+- Clean, readable API and extensible model structure
+- Full unit test coverage
+- Targets .NET 7
 
-Validate Iranian bank card numbers using the Luhn algorithm
-
-Identify the issuing bank of a card by its BIN (first 6 digits)
-
-Clean, readable API and extensible model structure
-
-📦 Installation
+## 📦 Installation
 
 You can clone or include the project manually:
 
@@ -26,21 +26,26 @@ git clone https://github.com/yourname/IranianValidators.git
 
 (Coming soon: NuGet release)
 
-🧪 Usage
+## 🔧 Requirements
 
-✅ Validate national ID
+- .NET 7.0 or higher
+- Visual Studio 2022 or compatible IDE
+
+## 🧪 Usage
+
+### Validate National ID
 
 using IranianValidators.Validators;
 
 bool isValid = NationalCodeValidator.IsValid("0084575941");
 
-✅ Validate the Iranian bank card number
+### Validate Iranian Bank Card Number
 
 using IranianValidators.Validators;
 
 bool isValid = BankCardValidator.IsValid("6037997514561243");
 
-✅ Get bank information from the card number
+### Get Bank Information from Card Number
 
 using IranianValidators.Providers;
 
@@ -49,14 +54,26 @@ Console.WriteLine(info.Label);        // بانک ملی ایران
 Console.WriteLine(info.Abbreviation); // BMEL
 Console.WriteLine(info.BankName);     // بانک ملی
 
-🧪 Unit Tests
+### Supported Banks
 
-The library includes full test coverage using xUnit.
+The library supports major Iranian banks including:
+- Bank Melli (بانک ملی)
+- Bank Saderat (بانک صادرات)
+- Bank Mellat (بانک ملت)
+- Bank Sepah (بانک سپه)
+- Bank Keshavarzi (بانک کشاورزی)
+- And many more...
 
-To run tests:
+## 🧪 Testing
+
+The library includes comprehensive test coverage using xUnit. To run tests:
 
 dotnet test
 
-🧑‍💻 Author
+## 🧑‍💻 Author
 Moein Maadi
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 

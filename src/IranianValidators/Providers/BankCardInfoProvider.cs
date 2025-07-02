@@ -2,7 +2,7 @@
 
 namespace IranianValidators.Providers;
 
-public static class BankCardInfoProvider
+internal static class BankCardInfoProvider
 {
     private static readonly Dictionary<string, (string Abbrev, string Label, string FullName, string English)> _bins = new()
     {
