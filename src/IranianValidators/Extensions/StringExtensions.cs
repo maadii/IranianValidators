@@ -33,4 +33,18 @@ public static class IranianStringExtensions
     {
         return BankCardInfoProvider.GetInfo(cardNumber);
     }
+    /// <summary>
+    /// Checks whether the string is a valid Iranian Mobile number.
+    /// </summary>
+    public static bool IsIranianMobileNumberValid(this string? input)
+    {
+        return IranianMobileValidator.IsValid(input);
+    }
+    /// <summary>
+    /// Retrieves Mobile information (label, abbreviation, etc.) from the card number.
+    /// </summary>
+    public static MobileInfo GetIranianMobileInfo(this string? mobileNumber)
+    {
+        return MobileInfoProvider.GetInfo(mobileNumber);
+    }
 }
