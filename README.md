@@ -4,6 +4,7 @@ IranianValidators is a lightweight .NET library for validating and retrieving in
 
 - National ID codes (کد ملی)
 - Bank card numbers (شماره کارت بانکی) with BIN recognition
+- Mobile numbers (شماره موبایل) with operator recognition
 
 This library is designed with clean architecture, full unit test coverage, and extensibility in mind.
 
@@ -11,9 +12,11 @@ This library is designed with clean architecture, full unit test coverage, and e
 
 - Validate Iranian national ID codes based on the official checksum algorithm
 - Validate Iranian bank card numbers using the Luhn algorithm
+- Validate Iranian mobile numbers and identify operators
 - Identify the issuing bank of a card by its BIN (first 6 digits)
 - Support for 15+ major Iranian banks
-- Multilingual bank information (Persian and English)
+- Support for all Iranian mobile operators (همراه اول، ایرانسل، رایتل و...)
+- Multilingual information (Persian and English)
 - Clean, readable API and extensible model structure
 - Full unit test coverage
 - Targets .NET 7
@@ -54,6 +57,8 @@ Console.WriteLine(info.Label);        // بانک ملی ایران
 Console.WriteLine(info.Abbreviation); // BMEL
 Console.WriteLine(info.BankName);     // بانک ملی
 
+### Validate Mobile Number
+
 ### Supported Banks
 
 The library supports major Iranian banks including:
@@ -63,6 +68,15 @@ The library supports major Iranian banks including:
 - Bank Sepah (بانک سپه)
 - Bank Keshavarzi (بانک کشاورزی)
 - And many more...
+
+### Supported Mobile Operators
+- Hamrah-e Aval / MCI (همراه اول)
+- Irancell / MTN (ایرانسل)
+- Rightel (رایتل)
+- Shatel Mobile (شاتل موبایل)
+- Aptel (آپتل)
+- Samantel (سامانتل)
+- Asiatech (آسیاتک)
 
 ## 🧪 Testing
 
