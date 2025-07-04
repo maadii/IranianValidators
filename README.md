@@ -5,6 +5,7 @@ IranianValidators is a lightweight .NET library for validating and retrieving in
 - National ID codes (کد ملی)
 - Bank card numbers (شماره کارت بانکی) with BIN recognition
 - Mobile numbers (شماره موبایل) with operator recognition
+- IBAN numbers (شماره شبا) with bank recognition
 
 This library is designed with clean architecture, full unit test coverage, and extensibility in mind.
 
@@ -13,8 +14,9 @@ This library is designed with clean architecture, full unit test coverage, and e
 - Validate Iranian national ID codes based on the official checksum algorithm
 - Validate Iranian bank card numbers using the Luhn algorithm
 - Validate Iranian mobile numbers and identify operators
-- Identify the issuing bank of a card by its BIN (first 6 digits)
-- Support for 15+ major Iranian banks
+- Validate Iranian IBAN numbers (IR) with checksum and bank validation
+- Identify the issuing bank from card BIN (first 6 digits) or IBAN
+- Support for 40+ Iranian banks and financial institutions
 - Support for all Iranian mobile operators (همراه اول، ایرانسل، رایتل و...)
 - Multilingual information (Persian and English)
 - Clean, readable API and extensible model structure
@@ -23,9 +25,7 @@ This library is designed with clean architecture, full unit test coverage, and e
 
 ## 📦 Installation
 
-You can clone or include the project manually:
-
-git clone https://github.com/yourname/IranianValidators.git
+You can clone or include the project manually.
 
 (Coming soon: NuGet release)
 
@@ -37,52 +37,72 @@ git clone https://github.com/yourname/IranianValidators.git
 ## 🧪 Usage
 
 ### Validate National ID
+using IranianValidators.Extensions;
 
-using IranianValidators.Validators;
-
-bool isValid = NationalCodeValidator.IsValid("0084575941");
+bool isValid = "2143100310".IsIranianNationalCodeValid();
 
 ### Validate Iranian Bank Card Number
+using IranianValidators.Extensions;
 
-using IranianValidators.Validators;
+bool isValid = "6037991451234567".IsIranianBankCardValid();
 
-bool isValid = BankCardValidator.IsValid("6037997514561243");
+### Get Bank Card Information
+using IranianValidators.Extensions;
 
-### Get Bank Information from Card Number
-
-using IranianValidators.Providers;
-
-var info = BankCardInfoProvider.GetInfo("6037997514561243");
-Console.WriteLine(info.Label);        // بانک ملی ایران
-Console.WriteLine(info.Abbreviation); // BMEL
-Console.WriteLine(info.BankName);     // بانک ملی
+var info = "6037991451234567".GetIranianBankInfoByCard(); Console.WriteLine(info.Label);        // بانک ملی ایران 
+Console.WriteLine(info.Abbreviation); // BMEL Console.WriteLine(info.BankName);     // بانک ملی 
+Console.WriteLine(info.EnglishName);  // Bank Melli Iran
 
 ### Validate Mobile Number
+using IranianValidators.Extensions;
 
-### Supported Banks
+bool isValid = "09121234567".IsIranianMobileNumberValid();
 
-The library supports major Iranian banks including:
+### Get Mobile Operator Info
+using IranianValidators.Extensions;
+
+var info = "09121234567".GetIranianMobileInfo(); Console.WriteLine(info.Operator);     // IR-MCI 
+Console.WriteLine(info.Label);        // همراه اول
+Console.WriteLine(info.Prefix);       // 0912
+
+### Validate IBAN (Sheba)
+using IranianValidators.Extensions;
+
+bool isValid = "IR820150000001234567890123".IsIranianIbanValid();
+
+### Get Bank Info from IBAN
+using IranianValidators.Extensions;
+
+var info = "IR820150000001234567890123".GetIranianBankInfoByIban(); 
+Console.WriteLine(info.Label);        // بانک صادرات ایران 
+Console.WriteLine(info.Abbreviation); // BSDR 
+Console.WriteLine(info.EnglishName);  // Bank Saderat Iran
+
+## 🏛️ Supported Banks
+The library supports 40+ Iranian banks and financial institutions including:
 - Bank Melli (بانک ملی)
 - Bank Saderat (بانک صادرات)
 - Bank Mellat (بانک ملت)
 - Bank Sepah (بانک سپه)
 - Bank Keshavarzi (بانک کشاورزی)
+- Bank Maskan (بانک مسکن)
+- Bank Tejarat (بانک تجارت)
+- Bank Parsian (بانک پارسیان)
+- Bank Pasargad (بانک پاسارگاد)
 - And many more...
 
-### Supported Mobile Operators
-- Hamrah-e Aval / MCI (همراه اول)
-- Irancell / MTN (ایرانسل)
-- Rightel (رایتل)
-- Shatel Mobile (شاتل موبایل)
-- Aptel (آپتل)
-- Samantel (سامانتل)
-- Asiatech (آسیاتک)
+## 📱 Supported Mobile Operators
+- Hamrah-e Aval / MCI (همراه اول) - 0910-0919
+- Irancell / MTN (ایرانسل) - 0930, 0933, 0935-0939
+- Rightel (رایتل) - 0920-0922
+- Shatel Mobile (شاتل موبایل) - 0998
+- Aptel (آپتل) - 0999
+- Samantel (سامانتل) - 0990, 0991
+- Asiatech (آسیاتک) - 0994
 
 ## 🧪 Testing
 
 The library includes comprehensive test coverage using xUnit. To run tests:
-
-dotnet test
 
 ## 🧑‍💻 Author
 Moein Maadi

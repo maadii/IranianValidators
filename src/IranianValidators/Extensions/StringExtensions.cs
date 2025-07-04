@@ -47,4 +47,18 @@ public static class IranianStringExtensions
     {
         return MobileInfoProvider.GetInfo(mobileNumber);
     }
+    /// <summary>  
+    /// Checks whether the string is a valid Iranian iban.
+    /// </summary>
+    public static bool IsIranianIbanValid(this string? input)
+    {
+        return IbanValidator.IsValid(input);
+    }
+    /// <summary>
+    /// Retrieves iban information (label, banck, etc.) from the iban number.
+    /// </summary>
+    public static BankCardInfo GetIranianBankInfoByIban(this string? iban)
+    {
+        return IbanBankInfoProvider.GetInfo(iban);
+    }
 }
