@@ -1,4 +1,4 @@
-﻿using IranianValidators.Validators;
+using IranianValidators.Validators;
 using IranianValidators.Providers;
 using IranianValidators.Models;
 

@@ -1,4 +1,4 @@
-﻿using IranianValidators.Models;
+using IranianValidators.Models;
 using System.Collections.Generic;
 
 namespace IranianValidators.Providers;
