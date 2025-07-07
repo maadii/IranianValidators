@@ -7,8 +7,8 @@ internal static class IbanBankInfoProvider
 {
     private static readonly Dictionary<string, (string Abbr, string Label, string English)> _codes = new()
     {
-        { "010", ("BMKR", "بانک مرکزی جمهوری اسلامی ایران", "Central Bank of Iran") },
-        { "011", ("BMEL", "بانک صنعت و معدن", "Bank of Industry and Mine") },
+        { "010", ("BMKR", "بانک مرکزی", "Central Bank of Iran") },
+        { "011", ("SMIN", "بانک صنعت و معدن", "Bank of Industry and Mine") },
         { "012", ("BKSH", "بانک کشاورزی", "Bank Keshavarzi") },
         { "013", ("BMEL", "بانک ملت", "Bank Mellat") },
         { "014", ("BSEP", "بانک سپه", "Bank Sepah") },
@@ -23,12 +23,12 @@ internal static class IbanBankInfoProvider
         { "023", ("BSMN", "بانک سامان", "Bank Saman") },
         { "024", ("BSIN", "بانک سینا", "Bank Sina") },
         { "025", ("BRES", "بانک قرض‌الحسنه رسالت", "Resalat Qarzolhasaneh Bank") },
-        { "026", ("BMHR", "بانک قرض‌الحسنه مهر ایران", "Mehr Iran Qarzolhasaneh Bank") },
+        { "026", ("BMHR", "بانک مهر ایران", "Mehr Iran Qarzolhasaneh Bank") },
         { "027", ("BAYN", "بانک آینده", "Bank Ayandeh") },
         { "028", ("BANS", "بانک انصار", "Bank Ansar") },
         { "029", ("BKAR", "بانک کارآفرین", "Bank Karafarin") },
-        { "030", ("BTAO", "بانک توسعه تعاون", "Bank Tose'e Ta'avon") },
-        { "031", ("BTOS", "بانک توسعه صادرات ایران", "Export Development Bank of Iran") },
+        { "030", ("BTAO", "بانک توسعه تعاون", "Bank Tose’e Ta’avon") },
+        { "031", ("BTOS", "بانک توسعه صادرات", "Export Development Bank of Iran") },
         { "032", ("BSHR", "بانک شهر", "Bank Shahr") },
         { "033", ("BGHA", "بانک قوامین", "Bank Ghavamin") },
         { "034", ("BTUR", "بانک گردشگری", "Tourism Bank") },
@@ -39,7 +39,13 @@ internal static class IbanBankInfoProvider
         { "039", ("BMID", "بانک خاورمیانه", "Middle East Bank") },
         { "040", ("BSAR", "بانک سرمایه", "Bank Sarmayeh") },
         { "041", ("BIRV", "بانک ایران‌ونزوئلا", "Iran-Venezuela Bank") },
-        { "042", ("BNOR", "مؤسسه اعتباری نور", "Noor Credit Institution") }
+        { "042", ("BNOR", "مؤسسه اعتباری نور", "Noor Credit Institution") },
+        { "053", ("BKAR", "بانک کارآفرین", "Bank Karafarin") },
+        { "054", ("BPAR", "بانک پارسیان", "Bank Parsian")  },
+        { "056", ("BSMN", "بانک سامان", "Bank Saman") },
+        { "060", ("BMHR", "بانک مهر ایران", "Mehr Iran Qarzolhasaneh Bank") },
+        { "062", ("BAYN", "بانک آینده", "Bank Ayandeh")},
+        
     };
 
     public static BankCardInfo GetInfo(string? iban)
