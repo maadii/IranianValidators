@@ -12,13 +12,8 @@ internal static class NationalCodeValidator
         if (!code.All(char.IsDigit))
             return false;
 
-        var repeated = new[]
-        {
-        "0000000000", "1111111111", "2222222222", "3333333333", "4444444444",
-        "5555555555", "6666666666", "7777777777", "8888888888", "9999999999"
-    };
-
-        if (repeated.Contains(code))
+        // Reject codes with all digits the same (e.g., 0000000000)
+        if (code.Distinct().Count() == 1)
             return false;
 
         var sum = 0;

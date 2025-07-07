@@ -6,6 +6,7 @@ IranianValidators is a lightweight .NET library for validating and retrieving in
 - Bank card numbers (شماره کارت بانکی) with BIN recognition
 - Mobile numbers (شماره موبایل) with operator recognition
 - IBAN numbers (شماره شبا) with bank recognition
+- Postal codes (کد پستی) with province recognition
 
 This library is designed with clean architecture, full unit test coverage, and extensibility in mind.
 
@@ -15,15 +16,18 @@ This library is designed with clean architecture, full unit test coverage, and e
 - Validate Iranian bank card numbers using the Luhn algorithm
 - Validate Iranian mobile numbers and identify operators
 - Validate Iranian IBAN numbers (IR) with checksum and bank validation
+- Identify province from postal codes
 - Identify the issuing bank from card BIN (first 6 digits) or IBAN
 - Support for 40+ Iranian banks and financial institutions
 - Support for all Iranian mobile operators (همراه اول، ایرانسل، رایتل و...)
+- Support for all Iranian provinces (استان‌ها)
 - Multilingual information (Persian and English)
 - Clean, readable API and extensible model structure
 - Full unit test coverage
 - Targets .NET 7
 
 ## 📦 Installation
+git clone https://github.com/yourname/IranianValidators.git
 
 You can clone or include the project manually.
 
@@ -34,9 +38,11 @@ You can clone or include the project manually.
 - .NET 7.0 or higher
 - Visual Studio 2022 or compatible IDE
 
-## 🧪 Usage
+## 🧪 Usage Examples
 
-### Validate National ID
+All validators support both extension methods and direct usage:
+
+### National ID
 using IranianValidators.Extensions;
 
 bool isValid = "2143100310".IsIranianNationalCodeValid();
@@ -78,20 +84,26 @@ Console.WriteLine(info.Label);        // بانک صادرات ایران
 Console.WriteLine(info.Abbreviation); // BSDR 
 Console.WriteLine(info.EnglishName);  // Bank Saderat Iran
 
-## 🏛️ Supported Banks
-The library supports 40+ Iranian banks and financial institutions including:
+### Postal Code
+using IranianValidators.Extensions;
+ 
+Info var info = "1234567890".GetIranianPostalCodeInfo(); // Get Province
+Console.WriteLine(info.Province);     // تهران 
+Console.WriteLine(info.Bin);         // 12
+
+
+## 🏛️ Supported Data
+
+### Banks (40+ institutions)
 - Bank Melli (بانک ملی)
 - Bank Saderat (بانک صادرات)
 - Bank Mellat (بانک ملت)
 - Bank Sepah (بانک سپه)
-- Bank Keshavarzi (بانک کشاورزی)
 - Bank Maskan (بانک مسکن)
 - Bank Tejarat (بانک تجارت)
-- Bank Parsian (بانک پارسیان)
-- Bank Pasargad (بانک پاسارگاد)
-- And many more...
+- And 35+ more...
 
-## 📱 Supported Mobile Operators
+### Mobile Operators
 - Hamrah-e Aval / MCI (همراه اول) - 0910-0919
 - Irancell / MTN (ایرانسل) - 0930, 0933, 0935-0939
 - Rightel (رایتل) - 0920-0922
@@ -100,14 +112,17 @@ The library supports 40+ Iranian banks and financial institutions including:
 - Samantel (سامانتل) - 0990, 0991
 - Asiatech (آسیاتک) - 0994
 
+### Provinces
+Full support for all 31 Iranian provinces (استان‌ها) via postal code lookup.
+
 ## 🧪 Testing
 
-The library includes comprehensive test coverage using xUnit. To run tests:
-
-## 🧑‍💻 Author
-Moein Maadi
+Run the comprehensive test suite:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - see LICENSE file for details.
+
+## 🧑‍💻 Author
+Moein Maadi
 

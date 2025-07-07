@@ -1,4 +1,4 @@
-﻿using IranianValidators.Validators;
+using IranianValidators.Validators;
 using IranianValidators.Providers;
 using IranianValidators.Models;
 
@@ -60,5 +60,20 @@ public static class IranianStringExtensions
     public static BankCardInfo GetIranianBankInfoByIban(this string? iban)
     {
         return IbanBankInfoProvider.GetInfo(iban);
+    }
+    /// <summary>
+    /// Checks whether the string is a valid Iranian postal code.
+    /// </summary>
+    public static bool IsIranianPostalCodeValid(this string? input)
+    {
+        return IranianPostalCodeValidator.IsValid(input);
+    }
+
+    /// <summary>
+    /// Retrieves postal region info (BIN and province) from the postal code.
+    /// </summary>
+    public static PostalCodeInfo GetIranianPostalCodeInfo(this string? input)
+    {
+        return PostalCodeInfoProvider.GetInfo(input);
     }
 }
